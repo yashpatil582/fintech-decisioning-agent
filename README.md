@@ -1,5 +1,9 @@
 # Fintech Decisioning Agent
 
+![CI](https://github.com/yashpatil582/fintech-decisioning-agent/actions/workflows/ci-cd.yml/badge.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)
+
 A production-grade AI decisioning service for real-time credit risk assessment. Built with **LangChain** agents on **AWS Bedrock**, a **FastAPI** backend, **FAISS** vector store for RAG-based policy retrieval, and deployed on **EKS** via **GitHub Actions** CI/CD.
 
 ## Architecture
@@ -103,3 +107,28 @@ Required secrets: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`
 | CI/CD | GitHub Actions |
 | Observability | AWS CloudWatch |
 | Testing | pytest + pytest-cov |
+
+## Project Structure
+
+```
+fintech-decisioning-agent/
+├── app/
+│   ├── main.py              # FastAPI app + health endpoints
+│   ├── agent.py             # LangChain decisioning agent
+│   ├── tools.py             # Risk score, policy, regulatory tools
+│   ├── rag.py               # FAISS vector store + RAG retrieval
+│   └── models.py            # Pydantic request/response schemas
+├── data/
+│   └── faiss_index/         # Persisted FAISS policy index
+├── infra/
+│   └── k8s/                 # Kubernetes manifests (EKS)
+├── tests/                   # pytest test suite
+├── scripts/                 # Utility scripts
+├── Dockerfile
+├── pyproject.toml
+└── .github/workflows/       # CI/CD pipeline
+```
+
+## License
+
+MIT © 2025 [Yash Patil](https://github.com/yashpatil582)
